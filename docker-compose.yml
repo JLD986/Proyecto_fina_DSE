@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  bodega-frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: bodega_gestion_container
+    ports:
+      - "8080:80"
+    restart: always
+    environment:
+      - NODE_ENV=production
+
+  # Aquí podrás añadir el backend más adelante:
+  # bodega-backend:
+  #   build: ./backend
+  #   ...

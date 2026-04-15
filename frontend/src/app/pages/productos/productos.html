@@ -1,60 +1,95 @@
-<div class="container-fluid">
-  <nav class="navbar navbar-dark bg-dark px-4">
-    <span class="navbar-brand fw-bold">📦 Producto Inventario</span>
-    <button class="btn btn-outline-light btn-sm">Cerrar sesión</button>
-  </nav>
-
-  <div class="container mt-4">
-    <div class="d-flex justify-content-between align-items-center mb-3">
-      <h4>Lista de productos</h4>
-      <button class="btn btn-primary">+ Agregar producto</button>
+<div class="page-container">
+  <div class="page-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+    <div class="search-box" style="position: relative; width: 400px;">
+      <input type="text" placeholder="Buscar producto o categoría..." (input)="onSearch($event)" 
+             style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ddd;">
     </div>
+    <button class="btn-primary" (click)="showForm.set(true)">+ Agregar Producto</button>
+  </div>
 
-    <table class="table table-bordered table-hover">
-      <thead class="table-dark">
+  @if (showForm()) {
+    <div class="modal-overlay">
+      <div class="modal-content">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+          <h2 style="margin: 0;">Registro de Producto</h2>
+          <button (click)="resetForm()" style="background: none; border: none; font-size: 24px; cursor: pointer;">×</button>
+        </div>
+        
+        <form (ngSubmit)="save()">
+          <div class="form-group">
+            <label>Nombre del Producto *</label>
+            <input type="text" [(ngModel)]="newProducto.nombre" name="nombre" required>
+          </div>
+
+          <div class="form-group">
+            <label>Descripción</label>
+            <input type="text" [(ngModel)]="newProducto.descripcion" name="descripcion">
+          </div>
+
+          <div style="display: flex; gap: 16px; margin-bottom: 16px;">
+            <div class="form-group" style="flex: 1;">
+              <label>Precio ($) *</label>
+              <input type="number" [(ngModel)]="newProducto.precio" name="precio" min="0" required>
+            </div>
+            <div class="form-group" style="flex: 1;">
+              <label>Stock Inicial *</label>
+              <input type="number" [(ngModel)]="newProducto.stock" name="stock" min="0" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Categoría</label>
+            <input type="text" [(ngModel)]="newProducto.categoria" name="categoria" placeholder="Ej: Electrónica, Muebles...">
+          </div>
+
+          <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 24px;">
+            <button type="button" class="btn-secondary" (click)="resetForm()">Cancelar</button>
+            <button type="submit" class="btn-primary">Guardar en Inventario</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  }
+
+  <div class="table-card">
+    <table class="data-table">
+      <thead>
         <tr>
-          <th>#</th>
-          <th>Nombre</th>
+          <th>ID</th>
+          <th>Producto</th>
           <th>Categoría</th>
-          <th>Stock</th>
           <th>Precio</th>
+          <th>Stock</th>
           <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>Monitor Samsung 24"</td>
-          <td>Electrónica</td>
-          <td>10</td>
-          <td>$250.00</td>
-          <td>
-            <button class="btn btn-warning btn-sm me-1">Editar</button>
-            <button class="btn btn-danger btn-sm">Eliminar</button>
-          </td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Teclado Mecánico</td>
-          <td>Periféricos</td>
-          <td>5</td>
-          <td>$80.00</td>
-          <td>
-            <button class="btn btn-warning btn-sm me-1">Editar</button>
-            <button class="btn btn-danger btn-sm">Eliminar</button>
-          </td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>Mouse Inalámbrico</td>
-          <td>Periféricos</td>
-          <td>2</td>
-          <td>$35.00</td>
-          <td>
-            <button class="btn btn-warning btn-sm me-1">Editar</button>
-            <button class="btn btn-danger btn-sm">Eliminar</button>
-          </td>
-        </tr>
+        @for (p of filteredProducts(); track p.id) {
+          <tr>
+            <td>{{ p.id }}</td>
+            <td>
+              <strong>{{ p.nombre }}</strong><br>
+              <small style="color: #7f8c8d;">{{ p.descripcion }}</small>
+            </td>
+            <td><span class="status-badge">{{ p.categoria }}</span></td>
+            <td>${{ p.precio | number:'1.2-2' }}</td>
+            <td>
+              <span [style.color]="p.stock < 10 ? 'red' : 'inherit'" [style.font-weight]="p.stock < 10 ? 'bold' : 'normal'">
+                {{ p.stock }} uds.
+              </span>
+              @if (p.stock < 10) {
+                <small style="display: block; color: red;">¡Stock Bajo!</small>
+              }
+            </td>
+            <td>
+              <button class="btn-icon" (click)="deleteProduct(p.id)" title="Eliminar producto">🗑️</button>
+            </td>
+          </tr>
+        } @empty {
+          <tr>
+            <td colspan="6" style="text-align: center; padding: 32px; color: #7f8c8d;">No hay productos en el inventario.</td>
+          </tr>
+        }
       </tbody>
     </table>
   </div>

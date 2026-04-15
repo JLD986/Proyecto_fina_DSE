@@ -1,1 +1,15 @@
-<router-outlet />
+<div class="app-container" [class.logged-out]="!isLoggedIn()">
+  @if (isLoggedIn()) {
+    <app-sidebar class="sidebar-container"></app-sidebar>
+    <div class="main-content">
+      <app-topbar></app-topbar>
+      <main class="router-content">
+        <router-outlet></router-outlet>
+      </main>
+    </div>
+  } @else {
+    <div class="auth-container">
+      <router-outlet></router-outlet>
+    </div>
+  }
+</div>

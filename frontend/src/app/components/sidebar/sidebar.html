@@ -1,0 +1,38 @@
+<aside class="sidebar">
+  <div class="logo">
+    <span class="logo-icon">📦</span>
+    <span class="logo-text">Bodega <span>Gestión</span></span>
+  </div>
+
+  <nav class="nav-links">
+    <a routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+      <span class="icon">🏠</span> Dashboard
+    </a>
+    
+    <div class="nav-section">GESTIÓN</div>
+    
+    <a routerLink="/clientes" routerLinkActive="active">
+      <span class="icon">👥</span> Clientes
+    </a>
+    
+    <a routerLink="/trabajadores" routerLinkActive="active">
+      <span class="icon">👷</span> Trabajadores
+    </a>
+    
+    <a routerLink="/administradores" routerLinkActive="active">
+      <span class="icon">🛡️</span> Administradores
+    </a>
+    
+    <div class="nav-section">ALMACÉN</div>
+    
+    <a routerLink="/productos" routerLinkActive="active">
+      <span class="icon">🛠️</span> Inventario
+    </a>
+  </nav>
+
+  <div class="sidebar-footer">
+    <button (click)="logout()" class="btn-logout">
+      <span class="icon">🚪</span> Salir
+    </button>
+  </div>
+</aside>

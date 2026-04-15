@@ -1,0 +1,91 @@
+<div class="page-container">
+  <div class="page-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+    <div class="search-box" style="position: relative; width: 400px;">
+      <input type="text" placeholder="Buscar administrador..." (input)="onSearch($event)" 
+             style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ddd;">
+    </div>
+    <button class="btn-primary" (click)="showForm.set(true)">+ Agregar Administrador</button>
+  </div>
+
+  @if (showForm()) {
+    <div class="modal-overlay">
+      <div class="modal-content">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+          <h2 style="margin: 0;">Nuevo Administrador</h2>
+          <button (click)="resetForm()" style="background: none; border: none; font-size: 24px; cursor: pointer;">×</button>
+        </div>
+        
+        <form (ngSubmit)="save()">
+          <div style="display: flex; gap: 16px; margin-bottom: 16px;">
+            <div class="form-group" style="flex: 1;">
+              <label>Nombres *</label>
+              <input type="text" [(ngModel)]="newAdmin.nombres" name="nombres" (input)="generateEmail()" required>
+            </div>
+            <div class="form-group" style="flex: 1;">
+              <label>Apellidos *</label>
+              <input type="text" [(ngModel)]="newAdmin.apellidos" name="apellidos" (input)="generateEmail()" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Correo Administrativo (Autogenerado)</label>
+            <input type="email" [(ngModel)]="newAdmin.email" name="email" readonly style="background-color: #f8f9fa;">
+          </div>
+
+          <div class="form-group">
+            <label>Teléfono Directo</label>
+            <input type="text" [(ngModel)]="newAdmin.telefono" name="telefono">
+          </div>
+
+          <p style="font-size: 12px; color: #7f8c8d; margin-top: 10px;">
+            * Los administradores tienen acceso total al sistema.
+          </p>
+
+          <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 24px;">
+            <button type="button" class="btn-secondary" (click)="resetForm()">Cancelar</button>
+            <button type="submit" class="btn-primary">Guardar Administrador</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  }
+
+  <div class="table-card">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre del Admin</th>
+          <th>Correo Admin</th>
+          <th>Teléfono</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (a of filteredAdmins(); track a.id) {
+          <tr [class.blocked]="!a.active">
+            <td>{{ a.id }}</td>
+            <td><strong>{{ a.nombres }} {{ a.apellidos }}</strong></td>
+            <td>{{ a.email }}</td>
+            <td>{{ a.telefono }}</td>
+            <td>
+              <span class="status-badge" [class.active]="a.active">
+                {{ a.active ? 'Activo' : 'Bloqueado' }}
+              </span>
+            </td>
+            <td>
+              <button class="btn-icon" (click)="toggleStatus(a.id)" [title]="a.active ? 'Bloquear acceso' : 'Restaurar acceso'">
+                {{ a.active ? '🚫' : '🔓' }}
+              </button>
+            </td>
+          </tr>
+        } @empty {
+          <tr>
+            <td colspan="6" style="text-align: center; padding: 32px; color: #7f8c8d;">No se encontraron administradores.</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,29 +1,45 @@
-<div class="container-fluid">
-  <nav class="navbar navbar-dark bg-dark px-4">
-    <span class="navbar-brand fw-bold">📦 Producto Inventario</span>
-    <button class="btn btn-outline-light btn-sm">Cerrar sesión</button>
-  </nav>
+<div class="dashboard">
+  <div class="welcome-header">
+    <h1>Bienvenido al Panel de Gestión</h1>
+    <p>Resumen del estado actual de la bodega y usuarios.</p>
+  </div>
 
-  <div class="container mt-4">
-    <h4 class="mb-4">Panel de control</h4>
-    <div class="row g-4">
-      <div class="col-md-4">
-        <div class="card text-white bg-primary p-3 text-center">
-          <h2>24</h2>
-          <p class="mb-0">Total productos</p>
+  <div class="stats-grid">
+    @for (stat of stats(); track stat.label) {
+      <div class="stat-card" [style.border-left-color]="stat.color">
+        <div class="stat-icon" [style.background-color]="stat.color + '20'" [style.color]="stat.color">
+          {{ stat.icon }}
+        </div>
+        <div class="stat-info">
+          <span class="stat-value">{{ stat.value }}</span>
+          <span class="stat-label">{{ stat.label }}</span>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="card text-white bg-success p-3 text-center">
-          <h2>18</h2>
-          <p class="mb-0">En stock</p>
-        </div>
+    }
+  </div>
+
+  <div class="dashboard-content">
+    <div class="alerts-section card">
+      <h3>⚠️ Alertas de Inventario</h3>
+      <div class="alerts-list">
+        @for (p of productosBajoStock(); track p.id) {
+          <div class="alert-item">
+            <span class="product-name">{{ p.nombre }}</span>
+            <span class="stock-badge">Quedan: {{ p.stock }}</span>
+            <a routerLink="/productos" class="btn-link">Reponer</a>
+          </div>
+        } @empty {
+          <p class="empty-msg">No hay alertas de stock bajo actualmente. ✅</p>
+        }
       </div>
-      <div class="col-md-4">
-        <div class="card text-white bg-danger p-3 text-center">
-          <h2>6</h2>
-          <p class="mb-0">Stock bajo</p>
-        </div>
+    </div>
+
+    <div class="quick-actions card">
+      <h3>🚀 Acciones Rápidas</h3>
+      <div class="actions-grid">
+        <button class="btn-action" routerLink="/clientes">Registrar Cliente</button>
+        <button class="btn-action" routerLink="/productos">Nuevo Producto</button>
+        <button class="btn-action" routerLink="/trabajadores">Ver Personal</button>
       </div>
     </div>
   </div>

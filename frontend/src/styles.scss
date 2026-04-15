@@ -1,0 +1,122 @@
+/* Estilos Globales - Bodega Gestión */
+:root {
+  --primary: #3498db;
+  --secondary: #2c3e50;
+  --success: #38b2ac;
+  --danger: #e74c3c;
+  --bg-page: #f4f7f6;
+  --card-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-page);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #2c3e50;
+}
+
+/* Tablas de Datos */
+.table-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+
+  th {
+    background-color: #f8f9fa;
+    padding: 16px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #7f8c8d;
+    border-bottom: 2px solid #edf2f7;
+  }
+
+  td {
+    padding: 16px;
+    font-size: 14px;
+    border-bottom: 1px solid #edf2f7;
+  }
+
+  tr:hover {
+    background-color: #fcfcfc;
+  }
+
+  tr.blocked {
+    background-color: #fffaf0;
+    opacity: 0.8;
+  }
+}
+
+/* Botones */
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  &:hover { opacity: 0.9; }
+}
+
+.btn-secondary {
+  background: white;
+  border: 1px solid #ddd;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 4px;
+  border-radius: 4px;
+  &:hover { background-color: #f1f2f6; }
+}
+
+/* Modales */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  width: 600px;
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.form-group {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  label { font-size: 13px; font-weight: 600; color: #7f8c8d; }
+  input { padding: 10px; border: 1px solid #ddd; border-radius: 6px; }
+}
+
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  background-color: #f1f2f6;
+  &.active { background-color: #e6fffa; color: var(--success); }
+}

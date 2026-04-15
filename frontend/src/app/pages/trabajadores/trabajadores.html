@@ -1,0 +1,95 @@
+<div class="page-container">
+  <div class="page-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+    <div class="search-box" style="position: relative; width: 400px;">
+      <input type="text" placeholder="Buscar trabajador..." (input)="onSearch($event)" 
+             style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ddd;">
+    </div>
+    <button class="btn-primary" (click)="showForm.set(true)">+ Registrar Trabajador</button>
+  </div>
+
+  @if (showForm()) {
+    <div class="modal-overlay">
+      <div class="modal-content">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+          <h2 style="margin: 0;">Nuevo Trabajador</h2>
+          <button (click)="resetForm()" style="background: none; border: none; font-size: 24px; cursor: pointer;">×</button>
+        </div>
+        
+        <form (ngSubmit)="save()">
+          <div style="display: flex; gap: 16px; margin-bottom: 16px;">
+            <div class="form-group" style="flex: 1;">
+              <label>Nombres *</label>
+              <input type="text" [(ngModel)]="newWorker.nombres" name="nombres" (input)="generateEmail()" required>
+            </div>
+            <div class="form-group" style="flex: 1;">
+              <label>Apellidos *</label>
+              <input type="text" [(ngModel)]="newWorker.apellidos" name="apellidos" (input)="generateEmail()" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Correo Empresarial (Autogenerado)</label>
+            <input type="email" [(ngModel)]="newWorker.email" name="email" readonly style="background-color: #f8f9fa;">
+          </div>
+
+          <div style="display: flex; gap: 16px; margin-bottom: 16px;">
+            <div class="form-group" style="flex: 1;">
+              <label>AFP *</label>
+              <input type="text" [(ngModel)]="newWorker.afp" name="afp" placeholder="Ej: Integra, Prima..." required>
+            </div>
+            <div class="form-group" style="flex: 1;">
+              <label>Teléfono de Contacto</label>
+              <input type="text" [(ngModel)]="newWorker.telefono" name="telefono">
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 24px;">
+            <button type="button" class="btn-secondary" (click)="resetForm()">Cancelar</button>
+            <button type="submit" class="btn-primary">Registrar Empleado</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  }
+
+  <div class="table-card">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Empleado</th>
+          <th>Correo Empresarial</th>
+          <th>AFP</th>
+          <th>Teléfono</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (t of filteredWorkers(); track t.id) {
+          <tr [class.blocked]="!t.active">
+            <td>{{ t.id }}</td>
+            <td><strong>{{ t.nombres }} {{ t.apellidos }}</strong></td>
+            <td>{{ t.email }}</td>
+            <td>{{ t.afp }}</td>
+            <td>{{ t.telefono }}</td>
+            <td>
+              <span class="status-badge" [class.active]="t.active">
+                {{ t.active ? 'Activo' : 'Bloqueado' }}
+              </span>
+            </td>
+            <td>
+              <button class="btn-icon" (click)="toggleStatus(t.id)" [title]="t.active ? 'Bloquear acceso' : 'Habilitar acceso'">
+                {{ t.active ? '🚫' : '🔓' }}
+              </button>
+            </td>
+          </tr>
+        } @empty {
+          <tr>
+            <td colspan="7" style="text-align: center; padding: 32px; color: #7f8c8d;">No hay trabajadores registrados.</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
