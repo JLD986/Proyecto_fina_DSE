@@ -10,7 +10,7 @@ export const routes: Routes = [
   { path: 'login', component: Login },
   { path: 'dashboard', component: Dashboard },
   { path: 'clientes', component: Clientes },
-  { path: 'trabajadores', component: Trabajadores },
+  { path: 'trabajadores', trabajadores },
   { path: 'administradores', component: Administradores },
   { path: 'productos', component: Productos },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
