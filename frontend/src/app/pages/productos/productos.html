@@ -29,8 +29,8 @@
           <td>{{ p.stock }}</td>
           <td>{{ p.precio }}</td>
           <td>
-            <button class="btn btn-warning btn-sm me-1" (click)="editarProducto(i)">Editar</button>
-            <button class="btn btn-danger btn-sm" (click)="eliminarProducto(i)">Eliminar</button>
+            <button class="btn btn-warning btn-sm me-1" (click)="editarProducto(p)">Editar</button>
+            <button class="btn btn-danger btn-sm" (click)="eliminarProducto(p._id)">Eliminar</button>
           </td>
         </tr>
       </tbody>

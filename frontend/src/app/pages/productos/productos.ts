@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ApiService } from '../../services/api';
 
 @Component({
   selector: 'app-productos',
@@ -8,19 +9,30 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './productos.html',
   styleUrl: './productos.css'
 })
-export class Productos {
+export class Productos implements OnInit {
 
-  productos = [
-    { nombre: 'Monitor Samsung 24"', categoria: 'Electrónica', stock: 10, precio: '$250.00' },
-    { nombre: 'Teclado Mecánico', categoria: 'Periféricos', stock: 5, precio: '$80.00' },
-    { nombre: 'Mouse Inalámbrico', categoria: 'Periféricos', stock: 2, precio: '$35.00' }
-  ];
-
+  productos: any[] = [];
   mostrarModal = false;
   modoEdicion = false;
-  indiceEdicion = -1;
+  indiceEdicion = '';
 
   productoActual = { nombre: '', categoria: '', stock: 0, precio: '' };
+
+  constructor(private api: ApiService, private cdr: ChangeDetectorRef) {}
+
+  ngOnInit() {
+    this.cargarProductos();
+  }
+
+  cargarProductos() {
+    this.api.getProductos().subscribe({
+      next: (data) => {
+        this.productos = data;
+        this.cdr.detectChanges();
+      },
+      error: (err) => console.error(err)
+    });
+  }
 
   abrirModal() {
     this.modoEdicion = false;
@@ -28,24 +40,30 @@ export class Productos {
     this.mostrarModal = true;
   }
 
-  editarProducto(i: number) {
+  editarProducto(producto: any) {
     this.modoEdicion = true;
-    this.indiceEdicion = i;
-    this.productoActual = { ...this.productos[i] };
+    this.indiceEdicion = producto._id;
+    this.productoActual = { ...producto };
     this.mostrarModal = true;
   }
 
-  eliminarProducto(i: number) {
-    this.productos.splice(i, 1);
+  eliminarProducto(id: string) {
+    this.api.eliminarProducto(id).subscribe({
+      next: () => this.cargarProductos(),
+      error: (err) => console.error(err)
+    });
   }
 
   guardarProducto() {
     if (this.modoEdicion) {
-      this.productos[this.indiceEdicion] = { ...this.productoActual };
+      this.api.editarProducto(this.indiceEdicion, this.productoActual).subscribe({
+        next: () => { this.cargarProductos(); this.cerrarModal(); }
+      });
     } else {
-      this.productos.push({ ...this.productoActual });
+      this.api.crearProducto(this.productoActual).subscribe({
+        next: () => { this.cargarProductos(); this.cerrarModal(); }
+      });
     }
-    this.cerrarModal();
   }
 
   cerrarModal() {
