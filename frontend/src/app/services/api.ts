@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
 
-  private URL = 'http://localhost:3000';
+  private URL = 'https://producto-inventario-backend.onrender.com';
 
   constructor(private http: HttpClient) {}
 
