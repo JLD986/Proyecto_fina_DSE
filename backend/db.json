@@ -1,0 +1,67 @@
+{
+  "usuarios": [
+    {
+      "_id": "1",
+      "nombre": "Admin",
+      "email": "admin@inventario.com",
+      "password": "$2b$10$B446.wY4z8F3mc/IfQ9ydO4IAmDLffx/ojlI4XWjdIYMFJSA3xnVS",
+      "rol": "administrador"
+    },
+    {
+      "_id": "2",
+      "nombre": "Juan Pérez",
+      "email": "juan@inventario.com",
+      "password": "$2b$10$lR/6ewNowUI5.mn8nbh/Pew7cu9SdVW9CYt.lD1sXZX9pjBfrV1sy",
+      "rol": "usuario"
+    }
+  ],
+  "productos": [
+    {
+      "_id": "1",
+      "nombre": "Monitor Samsung 24\"",
+      "categoria": "Electrónica",
+      "stock": 10,
+      "precio": "$250.00"
+    },
+    {
+      "_id": "2",
+      "nombre": "Teclado Mecánico",
+      "categoria": "Periféricos",
+      "stock": 5,
+      "precio": "$80.00"
+    },
+    {
+      "_id": "3",
+      "nombre": "Mouse Inalámbrico",
+      "categoria": "Periféricos",
+      "stock": 2,
+      "precio": "$35.00"
+    }
+  ],
+  "categorias": [
+    {
+      "_id": "1",
+      "nombre": "Electrónica",
+      "descripcion": "Dispositivos electrónicos"
+    },
+    {
+      "_id": "2",
+      "nombre": "Periféricos",
+      "descripcion": "Accesorios de computadora"
+    }
+  ],
+  "clientes": [
+    {
+      "_id": "1",
+      "nombre": "Empresa ABC",
+      "contacto": "Carlos Ruiz",
+      "telefono": "7777-1234"
+    },
+    {
+      "_id": "2",
+      "nombre": "Tienda XYZ",
+      "contacto": "Ana Gómez",
+      "telefono": "7777-5678"
+    }
+  ]
+}

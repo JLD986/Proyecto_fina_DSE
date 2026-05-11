@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 import { ApiService } from '../../services/api';
 
 @Component({
@@ -14,7 +15,7 @@ export class Dashboard implements OnInit {
   enStock = 0;
   stockBajo = 0;
 
-  constructor(private api: ApiService, private cdr: ChangeDetectorRef) {}
+  constructor(private api: ApiService, private cdr: ChangeDetectorRef, private router: Router) {}
 
   ngOnInit() {
     this.api.getProductos().subscribe({
@@ -25,5 +26,11 @@ export class Dashboard implements OnInit {
         this.cdr.detectChanges();
       }
     });
+  }
+
+  cerrarSesion() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('usuario');
+    this.router.navigate(['/login']);
   }
 }
