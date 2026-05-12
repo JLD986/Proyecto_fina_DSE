@@ -11,8 +11,16 @@ services:
     restart: always
     environment:
       - NODE_ENV=production
+    depends_on:
+      - bodega-backend
 
-  # Aquí podrás añadir el backend más adelante:
-  # bodega-backend:
-  #   build: ./backend
-  #   ...
+  bodega-backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: bodega_backend_container
+    ports:
+      - "3000:3000"
+    restart: always
+    environment:
+      - NODE_ENV=production
