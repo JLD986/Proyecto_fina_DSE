@@ -13,75 +13,185 @@
       "email": "juan@inventario.com",
       "password": "$2b$10$lR/6ewNowUI5.mn8nbh/Pew7cu9SdVW9CYt.lD1sXZX9pjBfrV1sy",
       "rol": "usuario"
-    },
-    {
-      "_id": "3",
-      "nombre": "María López",
-      "email": "maria@inventario.com",
-      "password": "123456",
-      "rol": "usuario"
-    },
-    {
-      "_id": "4",
-      "nombre": "Carlos Hernández",
-      "email": "carlos@inventario.com",
-      "password": "123456",
-      "rol": "administrador"
     }
   ],
-
   "productos": [
-    {
-      "_id": "1",
-      "nombre": "Monitor Samsung 24\"",
-      "categoria": "Electrónica",
-      "stock": 10,
-      "precio": "$250.00"
-    },
-    {
-      "_id": "2",
-      "nombre": "Teclado Mecánico",
-      "categoria": "Periféricos",
-      "stock": 5,
-      "precio": "$80.00"
-    },
-    {
-      "_id": "3",
-      "nombre": "Mouse Inalámbrico",
-      "categoria": "Periféricos",
-      "stock": 2,
-      "precio": "$35.00"
-    },
-    {
-      "_id": "4",
-      "nombre": "Laptop Dell Inspiron",
-      "categoria": "Computadoras",
-      "stock": 8,
-      "precio": "$750.00"
-    },
-    {
-      "_id": "5",
-      "nombre": "Impresora HP Laser",
-      "categoria": "Oficina",
-      "stock": 6,
-      "precio": "$180.00"
-    },
-    {
-      "_id": "6",
-      "nombre": "Disco SSD 1TB",
-      "categoria": "Almacenamiento",
-      "stock": 15,
-      "precio": "$95.00"
-    },
-    {
-      "_id": "7",
-      "nombre": "Silla Gamer RGB",
-      "categoria": "Muebles",
-      "stock": 4,
-      "precio": "$220.00"
-    }
-  ],
-
+  {
+    "_id": "1",
+    "nombre": "Monitor Samsung 24\"",
+    "categoria": "Electrónica",
+    "stock": 10,
+    "precio": "$250.00"
+  },
+  {
+    "_id": "2",
+    "nombre": "Teclado Mecánico",
+    "categoria": "Periféricos",
+    "stock": 5,
+    "precio": "$80.00"
+  },
+  {
+    "_id": "3",
+    "nombre": "Mouse Inalámbrico",
+    "categoria": "Periféricos",
+    "stock": 2,
+    "precio": "$35.00"
+  },
+  {
+    "_id": "4",
+    "nombre": "Laptop Dell Inspiron",
+    "categoria": "Computadoras",
+    "stock": 8,
+    "precio": "$750.00"
+  },
+  {
+    "_id": "5",
+    "nombre": "Impresora HP Laser",
+    "categoria": "Oficina",
+    "stock": 6,
+    "precio": "$180.00"
+  },
+  {
+    "_id": "6",
+    "nombre": "Disco SSD 1TB",
+    "categoria": "Almacenamiento",
+    "stock": 15,
+    "precio": "$95.00"
+  },
+  {
+    "_id": "7",
+    "nombre": "Silla Gamer RGB",
+    "categoria": "Muebles",
+    "stock": 4,
+    "precio": "$220.00"
+  },
+  {
+    "_id": "8",
+    "nombre": "Memoria RAM 16GB",
+    "categoria": "Computadoras",
+    "stock": 12,
+    "precio": "$75.00"
+  },
+  {
+    "_id": "9",
+    "nombre": "Router TP-Link",
+    "categoria": "Redes",
+    "stock": 9,
+    "precio": "$60.00"
+  },
+  {
+    "_id": "10",
+    "nombre": "Audífonos Logitech",
+    "categoria": "Audio",
+    "stock": 7,
+    "precio": "$45.00"
+  },
+  {
+    "_id": "11",
+    "nombre": "Tablet Samsung",
+    "categoria": "Electrónica",
+    "stock": 5,
+    "precio": "$320.00"
+  },
+  {
+    "_id": "12",
+    "nombre": "Laptop HP Pavilion",
+    "categoria": "Computadoras",
+    "stock": 6,
+    "precio": "$820.00"
+  },
+  {
+    "_id": "13",
+    "nombre": "MicroSD 128GB",
+    "categoria": "Almacenamiento",
+    "stock": 25,
+    "precio": "$20.00"
+  },
+  {
+    "_id": "14",
+    "nombre": "Parlantes Bluetooth",
+    "categoria": "Audio",
+    "stock": 11,
+    "precio": "$55.00"
+  },
+  {
+    "_id": "15",
+    "nombre": "Cámara de Seguridad",
+    "categoria": "Seguridad",
+    "stock": 10,
+    "precio": "$90.00"
+  },
+  {
+    "_id": "16",
+    "nombre": "Mouse Pad RGB",
+    "categoria": "Gaming",
+    "stock": 18,
+    "precio": "$25.00"
+  },
+  {
+    "_id": "17",
+    "nombre": "Webcam Full HD",
+    "categoria": "Periféricos",
+    "stock": 13,
+    "precio": "$65.00"
+  },
+  {
+    "_id": "18",
+    "nombre": "Procesador Ryzen 7",
+    "categoria": "Computadoras",
+    "stock": 5,
+    "precio": "$320.00"
+  },
+  {
+    "_id": "19",
+    "nombre": "Tarjeta Gráfica RTX 4060",
+    "categoria": "Computadoras",
+    "stock": 3,
+    "precio": "$650.00"
+  },
+  {
+    "_id": "20",
+    "nombre": "Fuente de Poder 750W",
+    "categoria": "Computadoras",
+    "stock": 7,
+    "precio": "$110.00"
+  },
+  {
+    "_id": "21",
+    "nombre": "Cable HDMI",
+    "categoria": "Accesorios",
+    "stock": 40,
+    "precio": "$12.00"
+  },
+  {
+    "_id": "22",
+    "nombre": "Switch de Red",
+    "categoria": "Redes",
+    "stock": 8,
+    "precio": "$85.00"
+  },
+  {
+    "_id": "23",
+    "nombre": "UPS APC",
+    "categoria": "Oficina",
+    "stock": 4,
+    "precio": "$150.00"
+  },
+  {
+    "_id": "24",
+    "nombre": "Monitor LG 27\"",
+    "categoria": "Electrónica",
+    "stock": 7,
+    "precio": "$290.00"
+  },
+  {
+    "_id": "25",
+    "nombre": "Smartphone Xiaomi",
+    "categoria": "Electrónica",
+    "stock": 10,
+    "precio": "$400.00"
+  }
+],
   "categorias": [
     {
       "_id": "1",
@@ -92,29 +202,8 @@
       "_id": "2",
       "nombre": "Periféricos",
       "descripcion": "Accesorios de computadora"
-    },
-    {
-      "_id": "3",
-      "nombre": "Computadoras",
-      "descripcion": "Laptops y PCs"
-    },
-    {
-      "_id": "4",
-      "nombre": "Oficina",
-      "descripcion": "Equipos de oficina"
-    },
-    {
-      "_id": "5",
-      "nombre": "Almacenamiento",
-      "descripcion": "Discos y memorias"
-    },
-    {
-      "_id": "6",
-      "nombre": "Muebles",
-      "descripcion": "Muebles para oficina y gaming"
     }
   ],
-
   "clientes": [
     {
       "_id": "1",
@@ -127,18 +216,6 @@
       "nombre": "Tienda XYZ",
       "contacto": "Ana Gómez",
       "telefono": "7777-5678"
-    },
-    {
-      "_id": "3",
-      "nombre": "TecnoMarket",
-      "contacto": "Luis Martínez",
-      "telefono": "7888-9999"
-    },
-    {
-      "_id": "4",
-      "nombre": "Office Center",
-      "contacto": "Patricia Flores",
-      "telefono": "7555-1122"
     }
   ]
 }
