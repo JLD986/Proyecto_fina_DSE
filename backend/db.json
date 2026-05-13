@@ -13,8 +13,23 @@
       "email": "juan@inventario.com",
       "password": "$2b$10$lR/6ewNowUI5.mn8nbh/Pew7cu9SdVW9CYt.lD1sXZX9pjBfrV1sy",
       "rol": "usuario"
+    },
+    {
+      "_id": "3",
+      "nombre": "María López",
+      "email": "maria@inventario.com",
+      "password": "123456",
+      "rol": "usuario"
+    },
+    {
+      "_id": "4",
+      "nombre": "Carlos Hernández",
+      "email": "carlos@inventario.com",
+      "password": "123456",
+      "rol": "administrador"
     }
   ],
+
   "productos": [
     {
       "_id": "1",
@@ -36,8 +51,37 @@
       "categoria": "Periféricos",
       "stock": 2,
       "precio": "$35.00"
+    },
+    {
+      "_id": "4",
+      "nombre": "Laptop Dell Inspiron",
+      "categoria": "Computadoras",
+      "stock": 8,
+      "precio": "$750.00"
+    },
+    {
+      "_id": "5",
+      "nombre": "Impresora HP Laser",
+      "categoria": "Oficina",
+      "stock": 6,
+      "precio": "$180.00"
+    },
+    {
+      "_id": "6",
+      "nombre": "Disco SSD 1TB",
+      "categoria": "Almacenamiento",
+      "stock": 15,
+      "precio": "$95.00"
+    },
+    {
+      "_id": "7",
+      "nombre": "Silla Gamer RGB",
+      "categoria": "Muebles",
+      "stock": 4,
+      "precio": "$220.00"
     }
   ],
+
   "categorias": [
     {
       "_id": "1",
@@ -48,8 +92,29 @@
       "_id": "2",
       "nombre": "Periféricos",
       "descripcion": "Accesorios de computadora"
+    },
+    {
+      "_id": "3",
+      "nombre": "Computadoras",
+      "descripcion": "Laptops y PCs"
+    },
+    {
+      "_id": "4",
+      "nombre": "Oficina",
+      "descripcion": "Equipos de oficina"
+    },
+    {
+      "_id": "5",
+      "nombre": "Almacenamiento",
+      "descripcion": "Discos y memorias"
+    },
+    {
+      "_id": "6",
+      "nombre": "Muebles",
+      "descripcion": "Muebles para oficina y gaming"
     }
   ],
+
   "clientes": [
     {
       "_id": "1",
@@ -62,6 +127,18 @@
       "nombre": "Tienda XYZ",
       "contacto": "Ana Gómez",
       "telefono": "7777-5678"
+    },
+    {
+      "_id": "3",
+      "nombre": "TecnoMarket",
+      "contacto": "Luis Martínez",
+      "telefono": "7888-9999"
+    },
+    {
+      "_id": "4",
+      "nombre": "Office Center",
+      "contacto": "Patricia Flores",
+      "telefono": "7555-1122"
     }
   ]
 }
